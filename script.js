@@ -35,9 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validación del formulario
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const age = document.getElementById('age').value;
+        const name = document.getElementById('nombreapellido').value;
+        const email = document.getElementById('correoelectronico').value;
+        const phone = document.getElementById('telefono').value;
+        const  message= document.getElementById('mensaje').value;
+
         const messages = document.getElementById('form-messages');
         messages.innerHTML = '';
 
@@ -47,14 +49,31 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
             messages.innerHTML += '<p>El correo electrónico no es válido.</p>';
         }
-        if (isNaN(age) || age < 18 || age > 100) {
-            messages.innerHTML += '<p>La edad debe ser un número entre 18 y 100.</p>';
+
+        if (!validarTelefono(phone)) {
+            messages.innerHTML += '<p>El número de teléfono debe contener solo dígitos y tener entre 7 y 15 caracteres.</p>';
         }
+        if (!validarMensaje(message)) {
+            messages.innerHTML += '<p>El mensaje no debe exceder los 250 caracteres.</p>';
+        }
+
+        
 
         if (messages.innerHTML === '') {
             const result = document.createElement('div');
-            result.innerHTML = `<p>Nombre: ${name}</p><p>Email: ${email}</p><p>Edad: ${age}</p>`;
+            result.innerHTML = `<p>Nombre: ${name}</p><p>Email: ${email}</p><p>Teléfono: ${phone}</p><p>mensaje: ${message}</p>`;
             messages.appendChild(result);
         }
     });
+       
+    function validarTelefono(telefono) {
+        const regexTelefono = /^[0-9]{7,15}$/;
+        return regexTelefono.test(telefono);
+    }
+
+    function validarMensaje(mensaje) {
+        return mensaje.length <= 250;
+    }
+
+    
 });
