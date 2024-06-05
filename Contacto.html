@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Contacto - Barbería Alura</title>
-        <link rel="stylesheet" href="reset.css/reset.css">
+        <link rel="stylesheet" href="reset/reset.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -20,10 +20,12 @@
                 </nav>
             </div>
         </header>
+
 <main>
-    <form>
+    
+    <form id="contact-form">
 <label for="nombreapellido">Nombre y Apellido</label>
-<input type="text" id="nombreapellido" class="input-padron" required>
+<input type="text" id="nombreapellido" class="input-padron" required maxlength="50">
 
 <label for="correoelectronico">Correo Electrónico</label>
 <input type="text" id="correoelectronico" class="input-padron" required placeholder="email@dominio.com">
@@ -32,7 +34,7 @@
 <input type="text" id="telefono" class="input-padron" required placeholder="(XX) XXXX XXXX">
 
 <label for="mensaje">Mensaje</label>
-<textarea cols="100" rows="10" id="mensaje" class="input-padron" required></textarea>
+<textarea cols="100" rows="10" id="mensaje" class="input-padron" required maxlength="150"></textarea>
 
 <fieldset>
     <legend>¿Cómo le gustaría que lo contactemos?</legend>
@@ -55,6 +57,7 @@
 
 <input type="submit" value="Enviar formulario" class="enviar">
     </form>
+    <div id="form-messages"></div>
 
     <table>
 <thead>
@@ -75,6 +78,9 @@
 </tbody>
     </table>
 </main>
+
+<script src="script.js"></script>
+
         <footer>
             <img src="Images/logo-blanco.png" alt="Logo de la Barbería Alura">>
             <p class="copyright">&copy; Copyright Barbería Alura - 2020</p>
